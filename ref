@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org" class="in-text" version="1.0" default-locale="en-US">
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
   <info>
-    <title>Custom Brackets Initial First Style Final</title>
-    <id>http://zotero.org</id>
-    <link href="http://zotero.org" rel="self"/>
+    <title>Custom Numeric Style (Chicago-based)</title>
+    <id>http://www.zotero.org/styles/custom-numeric-bracket-style</id>
+    <link href="http://www.zotero.org/styles/custom-numeric-bracket-style" rel="self"/>
     <author>
-      <name>Mendeley Fix</name>
+      <name>Custom Author</name>
     </author>
     <category citation-format="numeric"/>
-    <updated>2026-08-06T12:00:00+00:00</updated>
+    <category field="generic-base"/>
+    <updated>2026-08-06T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
-  
+
   <macro name="author">
     <names variable="author">
-      <name initialize-with=". " delimiter=", " and="text" name-as-sort-order="all" sort-separator=" " et-al-min="4" et-al-use-first="3"/>
-      <et-al term="et-al"/>
+      <name delimiter=", " initialize-with=". " et-al-min="4" et-al-use-first="3"/>
     </names>
   </macro>
 
   <macro name="title">
     <text variable="title" quotes="true"/>
+  </macro>
+
+  <macro name="container">
+    <text variable="container-title" font-style="italic"/>
+  </macro>
+
+  <macro name="locators">
+    <group delimiter=", ">
+      <text variable="volume"/>
+      <text variable="issue" prefix="no. "/>
+    </group>
   </macro>
 
   <macro name="issued">
@@ -28,22 +40,32 @@
     </date>
   </macro>
 
-  <citation>
-    <layout prefix="[" suffix="]" delimiter=",">
+  <macro name="page">
+    <text variable="page"/>
+  </macro>
+
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=", ">
       <text variable="citation-number"/>
     </layout>
   </citation>
 
-  <bibliography entry-spacing="1">
-    <layout>
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <layout suffix=".">
       <text variable="citation-number" suffix=". "/>
-      <text macro="author" suffix=", "/>
-      <text macro="title" suffix=", "/>
-      <text variable="container-title" suffix=" "/>
-      <text variable="volume"/>
-      <text variable="issue" prefix=", no. "/>
-      <text macro="issued" prefix=" (" suffix="): "/>
-      <text variable="page"/>
+      <group delimiter=" ">
+        <text macro="author" suffix=","/>
+        <text macro="title" suffix=","/>
+        <text macro="container"/>
+        <text macro="locators"/>
+        <group delimiter=": ">
+          <text macro="issued" prefix="(" suffix=")"/>
+          <text macro="page"/>
+        </group>
+      </group>
     </layout>
   </bibliography>
 </style>
