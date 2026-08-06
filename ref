@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://citeproc.org" class="in-text" version="1.0" default-locale="en-US">
+<style xmlns="http://purl.org" class="in-text" version="1.0" default-locale="en-US">
   <info>
-    <title>Custom Brackets and Initial-First Style</title>
+    <title>Custom Brackets and Initial First Style Fixed</title>
     <id>http://zotero.org</id>
     <link href="http://zotero.org" rel="self"/>
     <author>
@@ -13,7 +13,7 @@
   
   <macro name="author">
     <names variable="author">
-      <name initialize-with=". " delimiter=", " and="text" givenname-at-the-beginning="true" et-al-min="4" et-al-use-first="3"/>
+      <name initialize-with=". " delimiter=", " and="text" name-as-sort-order="all" sort-separator=" " et-al-min="4" et-al-use-first="3"/>
       <et-al term="et-al" font-style="normal"/>
     </names>
   </macro>
@@ -38,7 +38,7 @@
       <group prefix=", no. " suffix=" ">
         <text variable="issue"/>
       </group>
-      <group prefix="(" suffix="): ">
+      <group prefix=" (" suffix="): ">
         <date variable="issued">
           <date-part name="year"/>
         </date>
